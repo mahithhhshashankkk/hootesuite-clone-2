@@ -1,0 +1,36 @@
+.test
+{
+background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…g5NSAyLjA1Ni0xLjIwNnoiIGZpbGw9IiNGRkYiIG9wYWNpdHk9Ii4yNSIvPjwvZz48L3N2Zz4=);
+}
+a{
+  text-decoration: none;
+}
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+.footer_test{
+   display: flex;
+   justify-content:space-between;
+}
+.site-footer__tools2{
+flex-wrap: wrap;
+
+}
+@media only screen and (max-width: 767px){
+.footer_test {
+  display: block;
+  text-align: center;
+}
+}
+
+.site_footer_info{
+display: flex;
+
+}
+.site_info{
+display: inline;
+
+}
+.site_buttons{
+
+}
