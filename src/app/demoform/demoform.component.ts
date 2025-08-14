@@ -28,14 +28,14 @@ createForm(){
     name:['',Validators.required],
     surname:['',Validators.required],
     email:['',Validators.required],
-    company:['',Validators.required],
-    website:['',Validators.required],
-    employess:['',Validators.required],
-    industry:['',Validators.required],
+    company:['',Validators.required], // Primary Social Platform
+    website:[''], // Profile URL (optional)
+    employess:['',Validators.required], // Number of Social Accounts
+    industry:['',Validators.required], // Privacy Concern Level
     country:['',Validators.required],
-    phone:['',Validators.required],
-    title:['',Validators.required],
-    companyRevenue:['',Validators.required]
+    phone:[''], // Optional phone
+    title:['',Validators.required], // Main Privacy Goal
+    companyRevenue:['',Validators.required] // Posting Frequency
 
   })
 }
