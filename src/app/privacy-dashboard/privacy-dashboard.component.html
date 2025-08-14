@@ -1,0 +1,278 @@
+<div class="privacy-dashboard-container">
+  <!-- Main Dashboard Header -->
+  <div class="dashboard-header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h2><i class="fas fa-shield-alt text-primary mr-2"></i>Privacy Control Center</h2>
+          <p class="text-muted">Real-time monitoring and automated protection across all your digital profiles</p>
+        </div>
+        <div class="col-md-6 text-right">
+          <button class="btn btn-primary mr-2" (click)="runFullAudit()">
+            <i class="fas fa-search mr-1"></i>Run Full Audit
+          </button>
+          <span class="badge badge-success" *ngIf="scanningStatus === 'ACTIVE'">
+            <i class="fas fa-circle mr-1"></i>Live Monitoring
+          </span>
+          <span class="badge badge-warning" *ngIf="scanningStatus === 'SCANNING'">
+            <i class="fas fa-spinner fa-spin mr-1"></i>Scanning...
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk Score Overview -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card risk-score-card">
+          <div class="card-body text-center">
+            <div class="risk-score-circle" [ngClass]="{'high-risk': overallRiskScore > 70, 'medium-risk': overallRiskScore > 40, 'low-risk': overallRiskScore <= 40}">
+              <span class="score">{{overallRiskScore}}</span>
+              <small>Risk Score</small>
+            </div>
+            <p class="mt-2 mb-0">Overall Privacy Risk</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <div class="card-body">
+            <h3 class="text-danger">{{totalIssuesFound}}</h3>
+            <p class="mb-0">Issues Found</p>
+            <small class="text-muted">Across all platforms</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <div class="card-body">
+            <h3 class="text-success">{{autoFixesApplied}}</h3>
+            <p class="mb-0">Auto-fixes Applied</p>
+            <small class="text-muted">This month</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stats-card">
+          <div class="card-body">
+            <h3 class="text-info">{{connectedPlatforms.length}}</h3>
+            <p class="mb-0">Platforms Monitored</p>
+            <small class="text-muted">Real-time scanning</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connected Platforms & Automated Privacy Audit -->
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5><i class="fas fa-link mr-2"></i>Connected Platforms - Automated Privacy Audit</h5>
+            <small class="text-muted">AI-powered analysis of personal information exposure across all platforms</small>
+          </div>
+          <div class="card-body">
+            <div class="platform-grid">
+              <div class="platform-item" *ngFor="let platform of connectedPlatforms">
+                <div class="platform-card" [ngClass]="{'connected': platform.connected, 'disconnected': !platform.connected}">
+                  <div class="platform-header">
+                    <div class="platform-info">
+                      <h6>{{platform.name}}</h6>
+                      <span class="connection-status" *ngIf="platform.connected">
+                        <i class="fas fa-check-circle text-success"></i> Connected
+                      </span>
+                      <span class="connection-status" *ngIf="!platform.connected">
+                        <i class="fas fa-times-circle text-danger"></i> Not Connected
+                      </span>
+                    </div>
+                    <div class="risk-indicator" *ngIf="platform.connected">
+                      <span class="badge" 
+                            [ngClass]="{'badge-danger': platform.riskLevel === 'HIGH', 
+                                      'badge-warning': platform.riskLevel === 'MEDIUM', 
+                                      'badge-success': platform.riskLevel === 'LOW'}">
+                        {{platform.riskLevel}} RISK
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="platform-details" *ngIf="platform.connected">
+                    <p class="mb-1"><small>Last scan: {{platform.lastScan}}</small></p>
+                    <p class="mb-2"><small>{{platform.issues}} privacy issues found</small></p>
+                    <div class="exposed-data">
+                      <small class="text-muted">Exposed data detected:</small>
+                      <div class="data-tags mt-1">
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'Facebook'">Email</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'Facebook'">Birthday</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'Facebook'">Location</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'Instagram'">Photos</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'Instagram'">Geotags</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'LinkedIn'">Workplace</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'X (Twitter)'">Phone</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'X (Twitter)'">Location</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'TikTok'">Age</span>
+                        <span class="badge badge-light mr-1" *ngIf="platform.name === 'TikTok'">Location</span>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-primary mt-2" *ngIf="platform.issues > 0">
+                      <i class="fas fa-tools mr-1"></i>Auto-Fix {{platform.issues}} Issues
+                    </button>
+                  </div>
+                  
+                  <div class="platform-connect" *ngIf="!platform.connected">
+                    <p class="text-muted mb-2">Connect to enable monitoring</p>
+                    <button class="btn btn-sm btn-primary" (click)="connectPlatform(platform.name)">
+                      <i class="fas fa-plug mr-1"></i>Connect Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-time Exposure Alerts -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h5><i class="fas fa-bell mr-2"></i>Live Exposure Alerts</h5>
+            <small class="text-muted">Instant notifications for new privacy risks</small>
+          </div>
+          <div class="card-body">
+            <div class="alerts-container">
+              <div class="alert-item" *ngFor="let alert of recentAlerts">
+                <div class="alert-card" [ngClass]="{'high-severity': alert.severity === 'HIGH', 'medium-severity': alert.severity === 'MEDIUM'}">
+                  <div class="alert-header">
+                    <span class="alert-type">
+                      <i class="fas fa-exclamation-triangle" *ngIf="alert.type === 'EXPOSURE'"></i>
+                      <i class="fas fa-tag" *ngIf="alert.type === 'TAG'"></i>
+                      <i class="fas fa-file-alt" *ngIf="alert.type === 'CONTENT'"></i>
+                      {{alert.type}}
+                    </span>
+                    <button class="btn btn-sm btn-link text-muted" (click)="dismissAlert(alert)">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                  <div class="alert-content">
+                    <p class="platform-name">{{alert.platform}}</p>
+                    <p class="alert-message">{{alert.message}}</p>
+                    <small class="timestamp">{{alert.timestamp}}</small>
+                    <div class="alert-actions mt-2">
+                      <button class="btn btn-sm btn-primary" *ngIf="alert.action.includes('Auto')">
+                        <i class="fas fa-magic mr-1"></i>Auto-Fix
+                      </button>
+                      <button class="btn btn-sm btn-outline-primary" *ngIf="alert.action.includes('Review')">
+                        <i class="fas fa-eye mr-1"></i>Review
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI-Powered Privacy Insights & Cross-Platform Guidance -->
+  <div class="container-fluid mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h5><i class="fas fa-brain mr-2"></i>AI Privacy Insights & Cross-Platform Guidance</h5>
+        <small class="text-muted">Personalized recommendations and automated privacy actions</small>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let insight of privacyInsights">
+            <div class="insight-card">
+              <div class="insight-header">
+                <h6>{{insight.category}}</h6>
+                <span class="auto-fix-badge" *ngIf="insight.autoFixAvailable">
+                  <i class="fas fa-magic"></i> Auto-Fix Available
+                </span>
+              </div>
+              
+              <div class="exposed-info">
+                <p class="text-danger mb-2">
+                  <i class="fas fa-eye mr-1"></i>Currently Exposed:
+                </p>
+                <p class="exposed-data">{{insight.exposed}}</p>
+                
+                <p class="text-info mb-2 mt-3">
+                  <i class="fas fa-globe mr-1"></i>Affected Platforms:
+                </p>
+                <div class="platform-badges">
+                  <span class="badge badge-secondary mr-1" *ngFor="let platform of insight.platforms">
+                    {{platform}}
+                  </span>
+                </div>
+                
+                <div class="recommendation mt-3">
+                  <p class="text-success mb-2">
+                    <i class="fas fa-lightbulb mr-1"></i>Recommendation:
+                  </p>
+                  <p class="recommendation-text">{{insight.recommendation}}</p>
+                </div>
+                
+                <div class="insight-actions mt-3">
+                  <button class="btn btn-primary btn-sm w-100" 
+                          *ngIf="insight.autoFixAvailable"
+                          (click)="applyAutoFix(insight)">
+                    <i class="fas fa-magic mr-1"></i>Apply Auto-Fix
+                  </button>
+                  <button class="btn btn-outline-primary btn-sm w-100" 
+                          *ngIf="!insight.autoFixAvailable">
+                    <i class="fas fa-cog mr-1"></i>Manual Setup Required
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Harvesting Education -->
+  <div class="container-fluid mt-4">
+    <div class="card bg-light">
+      <div class="card-header">
+        <h5><i class="fas fa-graduation-cap mr-2"></i>Privacy Education Center</h5>
+        <small class="text-muted">Understanding how your data is harvested and tracked</small>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="education-section">
+              <h6><i class="fas fa-search mr-2 text-warning"></i>How Your Data is Tracked</h6>
+              <ul class="tracking-methods">
+                <li><strong>Cookies & Trackers:</strong> Third-party scripts follow you across websites</li>
+                <li><strong>Browser Fingerprinting:</strong> Unique device signatures identify you</li>
+                <li><strong>Social Graph Analysis:</strong> Your connections reveal your interests and behavior</li>
+                <li><strong>Location Correlation:</strong> Multiple apps share your location data</li>
+                <li><strong>Data Brokers:</strong> Companies compile and sell your personal information</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="education-section">
+              <h6><i class="fas fa-shield-alt mr-2 text-success"></i>How to Minimize Your Footprint</h6>
+              <ul class="protection-methods">
+                <li><strong>Use Privacy-Focused Browsers:</strong> Firefox, Brave, or DuckDuckGo</li>
+                <li><strong>Enable Two-Factor Authentication:</strong> Secure all your accounts</li>
+                <li><strong>Review App Permissions:</strong> Limit access to contacts, location, camera</li>
+                <li><strong>Use VPN Services:</strong> Hide your IP address and encrypt traffic</li>
+                <li><strong>Regular Privacy Audits:</strong> Let our AI monitor and protect you automatically</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
