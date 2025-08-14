@@ -28,39 +28,43 @@ createForm(){
     name:['',Validators.required],
     surname:['',Validators.required],
     email:['',Validators.required],
-    company:['',Validators.required],
-    website:['',Validators.required],
-    employess:['',Validators.required],
-    industry:['',Validators.required],
+    company:['',Validators.required], // Primary Social Platform
+    website:[''], // Profile URL (optional)
+    employess:['',Validators.required], // Number of Social Accounts
+    industry:['',Validators.required], // Privacy Concern Level
     country:['',Validators.required],
-    phone:['',Validators.required],
-    title:['',Validators.required],
-    companyRevenue:['',Validators.required]
+    phone:[''], // Optional phone
+    title:['',Validators.required], // Main Privacy Goal
+    companyRevenue:['',Validators.required] // Posting Frequency
 
   })
 }
 
 resetFields(){
-
    this.formEx = this.fb.group({
      name: new FormControl('', Validators.required),
      surname: new FormControl('', Validators.required),
      email: new FormControl('', Validators.required),
-     company: new FormControl('', Validators.required),
-     website: new FormControl('', Validators.required),
-     employess: new FormControl('', Validators.required),
-     industry: new FormControl('', Validators.required),
+     company: new FormControl('', Validators.required), // Primary Social Platform
+     website: new FormControl(''), // Profile URL (optional)
+     employess: new FormControl('', Validators.required), // Number of Social Accounts
+     industry: new FormControl('', Validators.required), // Privacy Concern Level
      country: new FormControl('', Validators.required),
-     phone: new FormControl('', Validators.required),
-     title: new FormControl('', Validators.required),
-     companyRevenue: new FormControl('', Validators.required)
+     phone: new FormControl(''), // Optional phone
+     title: new FormControl('', Validators.required), // Main Privacy Goal
+     companyRevenue: new FormControl('', Validators.required) // Posting Frequency
    });
  }
 onSubmit(value){
+// Simulate privacy assessment processing
+console.log('Privacy Assessment Data:', value);
 this.backendService.addUser(value)
 .then(res=>{
   this.resetFields();
-  window.location.href = 'https://hootsuite.com/request-demo/thank-you';
+  // Redirect to privacy assessment results page
+  alert('Privacy assessment complete! Check your email for detailed results and recommendations.');
+  // In a real app, you'd redirect to a results dashboard
+  // window.location.href = '/privacy-assessment-results';
 })
 
 }

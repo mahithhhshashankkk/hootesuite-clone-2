@@ -1,75 +1,228 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <style>
-
+.privacy-shield {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 0;
+}
+.risk-level-high { color: #e74c3c; }
+.risk-level-medium { color: #f39c12; }
+.risk-level-low { color: #27ae60; }
+.ai-insight-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 15px 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.scanning-animation {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
 </style>
 </head>
 <body>
   <header class="head-container mt-4 mb-3">
     <div class="container">
-      <a href="https://hootsuite.com/" >
-    <img src="assets/img/test2_logo.PNG" class="responsive"  alt="">
+      <a href="#" >
+    <img src="assets/img/test2_logo.PNG" class="responsive"  alt="PrivacyGuard">
   </a>
   </div>
   </header>
 <!--First Section-->
-  <section class="first-section el-color">
-    <div class="container">
-  <h1 class="h0">See Hootsuite <br><span class="no-wrap-sm">in action</span></h1>
-  <p></p>
-  <p>Schedule a demo today.</p>
+  <section class="first-section privacy-shield">
+    <div class="container text-center">
+  <h1 class="h0 mb-4">Protect Your Digital <br><span class="no-wrap-sm">Privacy Today</span></h1>
+  <p class="lead mb-4">AI-powered privacy auditing and real-time monitoring across all your social media accounts and web profiles.</p>
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="ai-insight-card scanning-animation">
+        <i class="fas fa-shield-alt fa-3x mb-3"></i>
+        <h4>Real-time Monitoring</h4>
+        <p>24/7 surveillance of your digital footprint</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="ai-insight-card">
+        <i class="fas fa-brain fa-3x mb-3"></i>
+        <h4>AI Risk Analysis</h4>
+        <p>Machine learning algorithms detect privacy vulnerabilities</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="ai-insight-card">
+        <i class="fas fa-tools fa-3x mb-3"></i>
+        <h4>Auto-Fix Actions</h4>
+        <p>Automated privacy settings optimization</p>
+      </div>
+    </div>
+  </div>
   </div>
   </section>
 
 <!--Second Section-->
 <section class="wrapper container">
 <div class="one mr-5">
-  <div class="img_poz">
-  <img src="assets/img/forrester.PNG" class="mr-5">
-  <img src="assets/img/spring.PNG">
+  <div class="privacy-dashboard">
+    <h3 class="text-center mb-4">Live Privacy Risk Dashboard</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5>Current Risk Level</h5>
+            <h2 class="risk-level-medium">MEDIUM</h2>
+            <div class="progress">
+              <div class="progress-bar bg-warning" style="width: 65%"></div>
+            </div>
+            <small>5 vulnerabilities detected</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5>Accounts Monitored</h5>
+            <h2 class="text-primary">12</h2>
+            <p class="mb-0">Facebook, Instagram, Twitter, LinkedIn, TikTok, and 7 more</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-
 
 <aside class="two req_demo mb-5">
 <app-demoform ></app-demoform>
 </aside>
 
-
 <div class="three">
-  <h1 class="font-weight-bold" >Drive business results <br>on social</h1>
-  <p class="lead" >Take a look at how Hootsuite's scalability, partners, and<br> integrations set us apart from the competition.</p>
+  <h1 class="font-weight-bold" >Comprehensive Privacy <br>Protection</h1>
+  <p class="lead" >Our AI-powered system continuously monitors your digital presence<br> across all platforms and provides real-time privacy insights.</p>
 
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card border-success">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-search text-success"></i> Smart Scanning</h5>
+          <p class="card-text">Advanced web crawling technology identifies exposed personal information across millions of websites and social platforms.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-info">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-chart-line text-info"></i> Risk Analytics</h5>
+          <p class="card-text">Machine learning algorithms analyze patterns and predict potential privacy threats before they become critical issues.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <h1 class="font-weight-bold" >The demo is customized  <br>around you</h1>
-  <p class="lead" >Get answers to your unique questions, and find out why Hootsuite<br> is the right choice for your business.</p>
+  <h1 class="font-weight-bold mt-5" >Personalized Privacy <br>Recommendations</h1>
+  <p class="lead" >Get customized advice based on your specific digital footprint<br> and privacy preferences. Start your free assessment today.</p>
 
 </div>
 
 </section>
 <!--Third Section-->
-<section class="section third-section">
+<section class="section third-section bg-light">
   <div class="container text-center pt-5 pb-4">
-    <h2 class="logo_bar_img">See why so many companies rely on Hootsuite as their social media management platform, including:</h2>
-    <img src="assets/img/virgin.PNG" class="responsive" width="50%">
+    <h2 class="mb-4">Trusted by Privacy-Conscious Users Worldwide</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h3 class="text-primary">2.5M+</h3>
+          <p>Accounts Protected</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h3 class="text-success">50M+</h3>
+          <p>Privacy Risks Detected</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h3 class="text-warning">99.9%</h3>
+          <p>Uptime Monitoring</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h3 class="text-info">24/7</h3>
+          <p>Real-time Protection</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h3>AI-Powered Privacy Insights</h3>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="insight-card">
+            <i class="fas fa-eye-slash fa-2x text-danger mb-3"></i>
+            <h5>Data Exposure Alert</h5>
+            <p>Your email address appears on 3 data broker sites</p>
+            <button class="btn btn-sm btn-outline-danger">Fix Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="insight-card">
+            <i class="fas fa-unlock fa-2x text-warning mb-3"></i>
+            <h5>Weak Privacy Settings</h5>
+            <p>Instagram profile allows anyone to view your photos</p>
+            <button class="btn btn-sm btn-outline-warning">Secure</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="insight-card">
+            <i class="fas fa-map-marker-alt fa-2x text-danger mb-3"></i>
+            <h5>Location Tracking</h5>
+            <p>5 apps are sharing your location with third parties</p>
+            <button class="btn btn-sm btn-outline-danger">Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 </section>
 
 <section class="section fourth-section">
   <div class="container">
-    <blockquote class="blockquote pt-5 pb-5">
-    <p class="blockquote-p">Hootsuite maintains valued partner status with customers due to its liberal integration philosophy and client responsiveness.</p>
-    <footer >
-    <cite class="blockquote__name">The Forrester Wave™: Social Media Management Solutions, Q2 2017</cite>
-    </footer>
-    </blockquote>
+    <div class="row align-items-center pt-5 pb-5">
+      <div class="col-md-8">
+        <blockquote class="blockquote">
+        <p class="blockquote-p">"PrivacyGuard's AI-powered monitoring helped us identify and fix critical privacy vulnerabilities before they could impact our business. Their real-time alerts and automated privacy improvements are game-changing."</p>
+        <footer >
+        <cite class="blockquote__name">Sarah Chen, Chief Privacy Officer, TechCorp</cite>
+        </footer>
+        </blockquote>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="live-monitoring-indicator">
+          <div class="scanning-animation">
+            <i class="fas fa-shield-alt fa-4x text-success"></i>
+          </div>
+          <p class="mt-3"><strong>LIVE MONITORING</strong><br>Your accounts are being protected right now</p>
+        </div>
+      </div>
+    </div>
 </div>
 </section>
 
+
+<!-- Privacy Dashboard Section -->
+<section class="privacy-dashboard-section">
+  <app-privacy-dashboard></app-privacy-dashboard>
+</section>
 
 </body>
 </html>
