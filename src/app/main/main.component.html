@@ -1,27 +1,70 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <style>
-
+.privacy-shield {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 0;
+}
+.risk-level-high { color: #e74c3c; }
+.risk-level-medium { color: #f39c12; }
+.risk-level-low { color: #27ae60; }
+.ai-insight-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 15px 0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.scanning-animation {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
 </style>
 </head>
 <body>
   <header class="head-container mt-4 mb-3">
     <div class="container">
-      <a href="https://hootsuite.com/" >
-    <img src="assets/img/test2_logo.PNG" class="responsive"  alt="">
+      <a href="#" >
+    <img src="assets/img/test2_logo.PNG" class="responsive"  alt="PrivacyGuard">
   </a>
   </div>
   </header>
 <!--First Section-->
-  <section class="first-section el-color">
-    <div class="container">
-  <h1 class="h0">See Hootsuite <br><span class="no-wrap-sm">in action</span></h1>
-  <p></p>
-  <p>Schedule a demo today.</p>
+  <section class="first-section privacy-shield">
+    <div class="container text-center">
+  <h1 class="h0 mb-4">Protect Your Digital <br><span class="no-wrap-sm">Privacy Today</span></h1>
+  <p class="lead mb-4">AI-powered privacy auditing and real-time monitoring across all your social media accounts and web profiles.</p>
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="ai-insight-card scanning-animation">
+        <i class="fas fa-shield-alt fa-3x mb-3"></i>
+        <h4>Real-time Monitoring</h4>
+        <p>24/7 surveillance of your digital footprint</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="ai-insight-card">
+        <i class="fas fa-brain fa-3x mb-3"></i>
+        <h4>AI Risk Analysis</h4>
+        <p>Machine learning algorithms detect privacy vulnerabilities</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="ai-insight-card">
+        <i class="fas fa-tools fa-3x mb-3"></i>
+        <h4>Auto-Fix Actions</h4>
+        <p>Automated privacy settings optimization</p>
+      </div>
+    </div>
+  </div>
   </div>
   </section>
 
