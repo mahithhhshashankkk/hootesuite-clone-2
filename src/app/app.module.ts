@@ -21,7 +21,8 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    DemoformComponent
+    DemoformComponent,
+    PrivacyDashboardComponent
   ],
   imports: [
     BrowserModule,
