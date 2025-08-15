@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { DemoformComponent } from './demoform/demoform.component';
+import { PrivacyDashboardComponent } from './privacy-dashboard/privacy-dashboard.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
